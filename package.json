@@ -1,14 +1,14 @@
 {
-  "name": "",
+  "name": "func-timer-trigger",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/src/functions/*.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "clean": "rimraf dist",
     "prestart": "npm run clean && npm run build",
-    "start": "func start",
+    "start": "npm run clean && npm run build && func start",
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
