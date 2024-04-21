@@ -4,7 +4,7 @@ import {
   InvocationContext,
   input,
 } from "@azure/functions";
-import { Bookmark } from "../interfaces/bookmark";
+import { Bookmark } from "../types/bookmark";
 import { cosmosInput } from "../inputs/cosmos-input";
 
 export async function getCosmosHttpTrigger(
