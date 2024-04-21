@@ -17,6 +17,6 @@ app.http('httpTrigger', {
 
 app.storageBlob('storageBlobTrigger', {
   path: 'sample-workitems/{name}',
-  connection: process.env.BLOB_CONNECTION_STRING,
-  handler: storageBlobTrigger
+  connection: "AzureWebJobsStorage",
+  handler: storageBlobTrigger,
 })
