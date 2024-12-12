@@ -2,7 +2,6 @@ import {
   HttpRequest,
   HttpResponseInit,
   InvocationContext,
-  input,
 } from "@azure/functions";
 import { Bookmark } from "../types/bookmark";
 import { cosmosOutput } from "../outputs/cosmos-output";
