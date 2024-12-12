@@ -38,7 +38,7 @@ jobs:
         run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: release.zip
@@ -46,15 +46,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    
     permissions:
       id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: node-app
 
@@ -62,11 +60,11 @@ jobs:
         run: unzip release.zip
       
       - name: Login to Azure
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3437566AD10440E899DF334370D416E4 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6C2A01D9BE1F402291ED0197AFD5A1DF }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6D6257F6F8E14C728A7C1A3823B23737 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7DB9930D6F004B32A5287F03DC13DE2B }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B815CB53D7404E85AA79658F0FFDEBC8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CD2F938DA69D495E8BB368FCD305BDD6 }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
